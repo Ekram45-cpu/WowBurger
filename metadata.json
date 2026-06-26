@@ -1,0 +1,6 @@
+{
+  "name": "Wow Burger Digital Menu",
+  "description": "A modern, mobile-first restaurant digital menu website for Wow Burger, featuring dynamic categories, item detail modals, user favorites, and an admin panel for managing items and orders.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

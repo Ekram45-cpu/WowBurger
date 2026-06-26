@@ -1,0 +1,51 @@
+{
+  "entities": {
+    "MenuItem": {
+      "title": "MenuItem",
+      "description": "A menu item available for purchase at Wow Burger",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "nameAm": { "type": "string" },
+        "descriptionEn": { "type": "string" },
+        "descriptionAm": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string", "enum": ["food", "drinks", "specials"] },
+        "image": { "type": "string" },
+        "ingredientsEn": { "type": "array" },
+        "ingredientsAm": { "type": "array" },
+        "allergensEn": { "type": "array" },
+        "allergensAm": { "type": "array" },
+        "isChefSpecial": { "type": "boolean" },
+        "isAvailable": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["nameEn", "price", "category", "image"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "An order placed by a customer from a specific table",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tableNumber": { "type": "string" },
+        "items": { "type": "array" },
+        "status": { "type": "string", "enum": ["pending", "preparing", "delivered", "cancelled"] },
+        "totalAmount": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["tableNumber", "items", "status", "totalAmount"]
+    }
+  },
+  "firestore": {
+    "menu_items/{itemId}": {
+      "schema": "MenuItem",
+      "description": "Collection of all food, drinks, and special items on the menu"
+    },
+    "orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of orders placed by tables"
+    }
+  }
+}

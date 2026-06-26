@@ -1,0 +1,14 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Menu items are publicly readable, and can be edited/created in this demo applet.
+    match /menu_items/{itemId} {
+      allow read: if true;
+      allow write: if true;
+    }
+    // Orders can be created and read by anyone (tables placing/viewing orders).
+    match /orders/{orderId} {
+      allow read, write: if true;
+    }
+  }
+}
